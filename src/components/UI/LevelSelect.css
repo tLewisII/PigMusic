@@ -1,0 +1,98 @@
+.level-select {
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.level-select-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #FF69B4;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.level-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.level-card:hover:not(.locked) {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.level-card.locked {
+  opacity: 0.7;
+  background: #f5f5f5;
+}
+
+.level-number {
+  color: #8B4513;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.level-description {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.oinks-display {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.oink.earned {
+  filter: none;
+}
+
+.oink.empty {
+  filter: grayscale(100%) opacity(0.3);
+}
+
+.best-score {
+  color: #FF69B4;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.play-level-button {
+  background: #FF69B4;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-level-button:hover:not(:disabled) {
+  background: #FF1493;
+  transform: scale(1.05);
+}
+
+.play-level-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}

@@ -1,0 +1,79 @@
+.game-controller {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: #8B4513;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #A0522D;
+  transform: translateY(-2px);
+}
+
+.game-stats {
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.score {
+  color: #FF69B4;
+}
+
+.coins {
+  color: #FFD700;
+}
+
+.streak {
+  color: #FF6347;
+}
+
+.game-main {
+  display: flex;
+  flex: 1;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  max-width: 500px;
+}
+
+.pig-section {
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.piano-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
