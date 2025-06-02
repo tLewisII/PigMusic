@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Renderer, Stave, StaveNote, Voice, Formatter } from 'vexflow';
+import { Renderer, Stave, StaveNote, Voice, Formatter, Accidental } from 'vexflow';
 import { Note } from '../../types/game';
 import './NoteDisplay.css';
 
@@ -49,6 +49,11 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint 
         keys: [vexNote],
         duration: 'q', // quarter note
       });
+
+      // Add accidental symbol when needed so the sharp appears on the staff
+      if (note.pitch.includes('#')) {
+        staveNote.addAccidental(0, new Accidental('#'));
+      }
 
       // Color the note if hint is shown
       if (showHint) {
