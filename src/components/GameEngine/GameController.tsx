@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { GameState, Note, NOTES_PER_LEVEL, STAFF_POSITIONS } from '../../types/game';
+import { GameState, Note, NOTES_PER_LEVEL, TREBLE_STAFF_POSITIONS, BASS_STAFF_POSITIONS } from '../../types/game';
 import VexFlowNoteDisplay from './VexFlowNoteDisplay';
 import PianoKeyboard from './PianoKeyboard';
 import PigMascot from '../Character/PigMascot';
@@ -30,15 +30,18 @@ const GameController: React.FC<GameControllerProps> = ({
   }, [gameState.settings]);
 
   const generateRandomNote = useCallback((): Note => {
-    const availableNotes = NOTES_PER_LEVEL[gameState.currentLevel - 1] || NOTES_PER_LEVEL[0];
+    const clef = gameState.selectedClef;
+    const availableNotes = NOTES_PER_LEVEL[clef][gameState.currentLevel - 1] || NOTES_PER_LEVEL[clef][0];
     const randomPitch = availableNotes[Math.floor(Math.random() * availableNotes.length)];
+    const staffPositions = clef === 'treble' ? TREBLE_STAFF_POSITIONS : BASS_STAFF_POSITIONS;
     
     return {
       pitch: randomPitch,
-      staffPosition: STAFF_POSITIONS[randomPitch],
-      accidental: randomPitch.includes('#') ? 'sharp' : undefined
+      staffPosition: staffPositions[randomPitch],
+      accidental: randomPitch.includes('#') ? 'sharp' : undefined,
+      clef: clef
     };
-  }, [gameState.currentLevel]);
+  }, [gameState.currentLevel, gameState.selectedClef]);
 
   useEffect(() => {
     if (!gameState.currentNote) {
@@ -128,6 +131,7 @@ const GameController: React.FC<GameControllerProps> = ({
           <VexFlowNoteDisplay 
             note={gameState.currentNote}
             showHint={showHint}
+            clef={gameState.selectedClef}
           />
           <ProgressBar 
             current={gameState.notesCompleted}
@@ -145,7 +149,7 @@ const GameController: React.FC<GameControllerProps> = ({
 
       <div className="piano-section">
         <PianoKeyboard 
-          availableNotes={NOTES_PER_LEVEL[gameState.currentLevel - 1] || NOTES_PER_LEVEL[0]}
+          availableNotes={NOTES_PER_LEVEL[gameState.selectedClef][gameState.currentLevel - 1] || NOTES_PER_LEVEL[gameState.selectedClef][0]}
           onNoteSelect={handleNoteSelect}
           highlightedNote={showHint ? gameState.currentNote?.pitch : undefined}
         />

@@ -1,7 +1,10 @@
+export type Clef = 'treble' | 'bass';
+
 export interface Note {
   pitch: string;
   staffPosition: number;
   accidental?: 'sharp' | 'flat';
+  clef: Clef;
 }
 
 export interface GameState {
@@ -15,6 +18,7 @@ export interface GameState {
   streak: number;
   notesCompleted: number;
   notesInLevel: number;
+  selectedClef: Clef;
 }
 
 export interface CustomizationItem {
@@ -64,22 +68,37 @@ export interface GameStatistics {
   totalPlayTime: number;
 }
 
-export const NOTES_PER_LEVEL = [
-  // Level 1: just the first three notes around middle C
-  ['C4', 'D4', 'E4'],
-  // Level 2: add F and G
-  ['C4', 'D4', 'E4', 'F4', 'G4'],
-  // Level 3: full C major scale
-  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5'],
-  // Level 4: introduce sharps
-  [
-    'C4', 'C#4', 'D4', 'D#4', 'E4',
-    'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
-    'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5'
+export const NOTES_PER_LEVEL = {
+  treble: [
+    // Level 1: just the first three notes around middle C
+    ['C4', 'D4', 'E4'],
+    // Level 2: add F and G
+    ['C4', 'D4', 'E4', 'F4', 'G4'],
+    // Level 3: full C major scale
+    ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5'],
+    // Level 4: introduce sharps
+    [
+      'C4', 'C#4', 'D4', 'D#4', 'E4',
+      'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
+      'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5'
+    ]
+  ],
+  bass: [
+    // Level 1: first three notes in bass clef
+    ['F2', 'G2', 'A2'],
+    // Level 2: add B and C
+    ['F2', 'G2', 'A2', 'B2', 'C3'],
+    // Level 3: extended range
+    ['F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3'],
+    // Level 4: introduce sharps in bass clef
+    [
+      'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
+      'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3'
+    ]
   ]
-];
+};
 
-export const STAFF_POSITIONS: { [key: string]: number } = {
+export const TREBLE_STAFF_POSITIONS: { [key: string]: number } = {
   'C4': 0,   // Ledger line below
   'C#4': 0,  // Sharp shares position with its natural
   'D4': 1,   // Space below staff
@@ -98,4 +117,28 @@ export const STAFF_POSITIONS: { [key: string]: number } = {
   'D#5': 8,
   'E5': 9,   // Fourth space
   'F5': 10   // Top line
+};
+
+export const BASS_STAFF_POSITIONS: { [key: string]: number } = {
+  'E2': 0,   // Ledger line below
+  'F2': 1,   // Space below staff
+  'F#2': 1,
+  'G2': 2,   // Bottom line
+  'G#2': 2,
+  'A2': 3,   // First space
+  'A#2': 3,
+  'B2': 4,   // Second line
+  'C3': 5,   // Second space
+  'C#3': 5,
+  'D3': 6,   // Third line
+  'D#3': 6,
+  'E3': 7,   // Third space
+  'F3': 8,   // Fourth line
+  'F#3': 8,
+  'G3': 9,   // Fourth space
+  'G#3': 9,
+  'A3': 10,  // Top line
+  'A#3': 10,
+  'B3': 11,  // Space above staff
+  'C4': 12   // Ledger line above
 };

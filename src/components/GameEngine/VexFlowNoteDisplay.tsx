@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Stave, StaveNote, Voice, Formatter, Accidental } from 'vexflow';
-import { Note } from '../../types/game';
+import { Note, Clef } from '../../types/game';
 import './NoteDisplay.css';
 
 interface VexFlowNoteDisplayProps {
   note: Note | null;
   showHint: boolean;
+  clef: Clef;
 }
 
-const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint }) => {
+const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint, clef }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<Renderer | null>(null);
 
@@ -28,7 +29,7 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint 
 
     // Create a stave (staff)
     const stave = new Stave(10, 40, 400);
-    stave.addClef('treble');
+    stave.addClef(clef);
     stave.setContext(context).draw();
 
     // If there's a note to display, render it
@@ -38,10 +39,10 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint 
       let vexNote = note.pitch.toLowerCase();
       if (vexNote.includes('#')) {
         // C#4 -> c#/4
-        vexNote = vexNote.replace('4', '/4').replace('5', '/5');
+        vexNote = vexNote.replace(/(\d)/, '/$1');
       } else {
         // C4 -> c/4
-        vexNote = vexNote.replace('4', '/4').replace('5', '/5');
+        vexNote = vexNote.replace(/(\d)/, '/$1');
       }
       
       // Create the note
@@ -68,7 +69,7 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint 
       new Formatter().joinVoices([voice]).format([voice], 350);
       voice.draw(context, stave);
     }
-  }, [note, showHint]);
+  }, [note, showHint, clef]);
 
   return (
     <div className="note-display">
