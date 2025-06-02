@@ -7,7 +7,6 @@ export interface Note {
 export interface GameState {
   currentLevel: number;
   currentNote: Note | null;
-  score: number;
   strikes: number;
   pigCoins: number;
   unlockedItems: CustomizationItem[];
@@ -46,7 +45,6 @@ export interface GameSettings {
 export interface LevelProgress {
   levelNumber: number;
   oinks: number;
-  bestScore: number;
   completed: boolean;
 }
 
