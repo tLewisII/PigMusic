@@ -35,15 +35,6 @@ const GameController: React.FC<GameControllerProps> = ({
     const randomPitch = availableNotes[Math.floor(Math.random() * availableNotes.length)];
     const staffPositions = clef === 'treble' ? TREBLE_STAFF_POSITIONS : BASS_STAFF_POSITIONS;
     
-    // Debug logging
-    console.log('Generating note:', {
-      clef,
-      level: gameState.currentLevel,
-      availableNotes,
-      selectedNote: randomPitch,
-      staffPosition: staffPositions[randomPitch]
-    });
-    
     return {
       pitch: randomPitch,
       staffPosition: staffPositions[randomPitch],
