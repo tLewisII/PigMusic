@@ -84,15 +84,15 @@ export const NOTES_PER_LEVEL = {
     ]
   ],
   bass: [
-    // Level 1: first three notes in bass clef
-    ['F2', 'G2', 'A2'],
-    // Level 2: add B and C
-    ['F2', 'G2', 'A2', 'B2', 'C3'],
+    // Level 1: first three notes in bass clef (starting from staff)
+    ['G2', 'A2', 'B2'],
+    // Level 2: add C and D
+    ['G2', 'A2', 'B2', 'C3', 'D3'],
     // Level 3: extended range
     ['F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3'],
     // Level 4: introduce sharps in bass clef
     [
-      'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
+      'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
       'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3'
     ]
   ]
@@ -120,12 +120,12 @@ export const TREBLE_STAFF_POSITIONS: { [key: string]: number } = {
 };
 
 export const BASS_STAFF_POSITIONS: { [key: string]: number } = {
-  'C2': -2,  // Two ledger lines below
-  'C#2': -2,
-  'D2': -1,  // One ledger line below
-  'D#2': -1,
-  'E2': 0,   // Space below staff (ledger line space)
-  'F2': 1,   // Ledger line below staff
+  'C2': 0,   // Two ledger lines below (but we'll display as space below for readability)
+  'C#2': 0,
+  'D2': 0,   // One ledger line below (but we'll display as space below for readability)
+  'D#2': 0,
+  'E2': 0,   // Space below staff
+  'F2': 1,   // First ledger line below staff
   'F#2': 1,
   'G2': 2,   // Bottom line of staff
   'G#2': 2,
@@ -146,6 +146,6 @@ export const BASS_STAFF_POSITIONS: { [key: string]: number } = {
   'B3': 11,  // Space above staff
   'C4': 12,  // Ledger line above staff
   'C#4': 12,
-  'D4': 13,  // Space above (ledger line space)
+  'D4': 13,  // Space above (two ledger lines above)
   'D#4': 13
 };
