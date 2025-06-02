@@ -68,11 +68,6 @@
   filter: grayscale(100%) opacity(0.3);
 }
 
-.best-score {
-  color: #FF69B4;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
 
 .play-level-button {
   background: #FF69B4;

@@ -57,10 +57,6 @@ const LevelSelect: React.FC<LevelSelectProps> = ({
                 {renderOinks(level.oinks)}
               </div>
               
-              {level.bestScore > 0 && (
-                <p className="best-score">Best Score: {level.bestScore}</p>
-              )}
-              
               <button
                 className="play-level-button"
                 onClick={() => onSelectLevel(level.levelNumber)}

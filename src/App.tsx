@@ -16,7 +16,6 @@ const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
     currentLevel: 0,
     currentNote: null,
-    score: 0,
     strikes: 0,
     pigCoins: 0,
     unlockedItems: [],
@@ -28,10 +27,10 @@ const App: React.FC = () => {
   });
 
   const [levelProgress, setLevelProgress] = useState<LevelProgress[]>([
-    { levelNumber: 1, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 2, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 3, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 4, oinks: 0, bestScore: 0, completed: false }
+    { levelNumber: 1, oinks: 0, completed: false },
+    { levelNumber: 2, oinks: 0, completed: false },
+    { levelNumber: 3, oinks: 0, completed: false },
+    { levelNumber: 4, oinks: 0, completed: false }
   ]);
 
   const [currentScreen, setCurrentScreen] = useState<'menu' | 'game' | 'levelSelect'>('menu');
@@ -64,7 +63,6 @@ const App: React.FC = () => {
     setGameState(prev => ({
       ...prev,
       currentLevel: level,
-      score: 0,
       strikes: 0,
       streak: 0,
       notesCompleted: 0
@@ -72,7 +70,7 @@ const App: React.FC = () => {
     setCurrentScreen('game');
   };
 
-  const handleLevelComplete = (oinks: number, score: number) => {
+  const handleLevelComplete = (oinks: number) => {
     const updatedProgress = [...levelProgress];
     const levelIndex = gameState.currentLevel - 1;
     
@@ -80,7 +78,6 @@ const App: React.FC = () => {
       updatedProgress[levelIndex] = {
         ...updatedProgress[levelIndex],
         oinks: Math.max(oinks, updatedProgress[levelIndex].oinks),
-        bestScore: Math.max(score, updatedProgress[levelIndex].bestScore),
         completed: true
       };
       

@@ -10,7 +10,7 @@ import './GameController.css';
 interface GameControllerProps {
   gameState: GameState;
   setGameState: React.Dispatch<React.SetStateAction<GameState>>;
-  onLevelComplete: (oinks: number, score: number) => void;
+  onLevelComplete: (oinks: number) => void;
   onBackToMenu: () => void;
 }
 
@@ -51,22 +51,16 @@ const GameController: React.FC<GameControllerProps> = ({
   const handleNoteSelect = (selectedNote: string) => {
     if (!gameState.currentNote) return;
 
-    const responseTime = Date.now() - startTime;
     const isCorrect = selectedNote === gameState.currentNote.pitch;
 
     if (isCorrect) {
-      const speedBonus = Math.max(0, 1000 - responseTime / 10);
-      const streakBonus = gameState.streak * 50;
-      const points = 100 + speedBonus + streakBonus;
-
       setPigMood('happy');
       setTimeout(() => setPigMood('idle'), 1500);
-      
+
       AudioManager.playSuccessSound();
 
       setGameState(prev => ({
         ...prev,
-        score: prev.score + points,
         streak: prev.streak + 1,
         strikes: 0,
         pigCoins: prev.pigCoins + 10,
@@ -99,7 +93,7 @@ const GameController: React.FC<GameControllerProps> = ({
       setPigMood('celebrating');
       AudioManager.playLevelCompleteSound();
       setTimeout(() => {
-        onLevelComplete(oinks, gameState.score);
+        onLevelComplete(oinks);
       }, 2000);
     }
   }, [gameState.notesCompleted, gameState.notesInLevel]);
@@ -111,6 +105,11 @@ const GameController: React.FC<GameControllerProps> = ({
     return 1;
   };
 
+  const renderOinks = (count: number) =>
+    Array.from({ length: 3 }, (_, i) => (
+      <span key={i} className={`oink-icon ${i < count ? 'earned' : 'empty'}`}>🐽</span>
+    ));
+
   return (
     <div className="game-controller">
       <div className="game-header">
@@ -118,9 +117,9 @@ const GameController: React.FC<GameControllerProps> = ({
           ← Back
         </button>
         <div className="game-stats">
-          <div className="score">Score: {gameState.score}</div>
+          <div className="oinks">{renderOinks(calculateOinks())}</div>
           <div className="coins">🪙 {gameState.pigCoins}</div>
-          <div className="streak">🔥 {gameState.streak}</div>
+          <div className="super-oink">🐽 {gameState.streak}</div>
         </div>
       </div>
 

@@ -37,16 +37,21 @@
   font-weight: bold;
 }
 
-.score {
-  color: #FF69B4;
-}
-
 .coins {
   color: #FFD700;
 }
 
-.streak {
+.super-oink {
   color: #FF6347;
+}
+
+.oinks {
+  display: flex;
+  gap: 5px;
+}
+
+.oink-icon.empty {
+  filter: grayscale(100%) opacity(0.3);
 }
 
 .game-main {
