@@ -52,7 +52,7 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint 
 
       // Add accidental symbol when needed so the sharp appears on the staff
       if (note.pitch.includes('#')) {
-        staveNote.addAccidental(0, new Accidental('#'));
+        staveNote.addModifier(new Accidental('#'), 0);
       }
 
       // Color the note if hint is shown
