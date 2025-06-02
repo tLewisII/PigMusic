@@ -21,6 +21,11 @@ npm start
 - 🎹 Interactive piano keyboard
 - 🐽 Adorable pig mascot with animations
 - 📊 Progressive difficulty levels
+- Four levels gradually introduce new notes:
+  - Level 1: notes C, D and E
+  - Level 2: adds F and G
+  - Level 3: full C major scale
+  - Level 4: introduces sharps
 - 🏆 Oink rating system (1-3 oinks per level)
 - 🎵 Audio feedback for learning
 - 💾 Progress saved automatically
