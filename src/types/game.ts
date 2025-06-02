@@ -120,10 +120,14 @@ export const TREBLE_STAFF_POSITIONS: { [key: string]: number } = {
 };
 
 export const BASS_STAFF_POSITIONS: { [key: string]: number } = {
-  'E2': 0,   // Ledger line below
-  'F2': 1,   // Space below staff
+  'C2': -2,  // Two ledger lines below
+  'C#2': -2,
+  'D2': -1,  // One ledger line below
+  'D#2': -1,
+  'E2': 0,   // Space below staff (ledger line space)
+  'F2': 1,   // Ledger line below staff
   'F#2': 1,
-  'G2': 2,   // Bottom line
+  'G2': 2,   // Bottom line of staff
   'G#2': 2,
   'A2': 3,   // First space
   'A#2': 3,
@@ -140,5 +144,8 @@ export const BASS_STAFF_POSITIONS: { [key: string]: number } = {
   'A3': 10,  // Top line
   'A#3': 10,
   'B3': 11,  // Space above staff
-  'C4': 12   // Ledger line above
+  'C4': 12,  // Ledger line above staff
+  'C#4': 12,
+  'D4': 13,  // Space above (ledger line space)
+  'D#4': 13
 };
