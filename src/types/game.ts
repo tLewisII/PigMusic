@@ -67,22 +67,37 @@ export interface GameStatistics {
 }
 
 export const NOTES_PER_LEVEL = [
-  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5'],
-  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5'],
-  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5'],
-  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5']
+  // Level 1: just the first three notes around middle C
+  ['C4', 'D4', 'E4'],
+  // Level 2: add F and G
+  ['C4', 'D4', 'E4', 'F4', 'G4'],
+  // Level 3: full C major scale
+  ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5'],
+  // Level 4: introduce sharps
+  [
+    'C4', 'C#4', 'D4', 'D#4', 'E4',
+    'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
+    'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5'
+  ]
 ];
 
 export const STAFF_POSITIONS: { [key: string]: number } = {
   'C4': 0,   // Ledger line below
+  'C#4': 0,  // Sharp shares position with its natural
   'D4': 1,   // Space below staff
+  'D#4': 1,
   'E4': 2,   // Bottom line
   'F4': 3,   // First space
+  'F#4': 3,
   'G4': 4,   // Second line
+  'G#4': 4,
   'A4': 5,   // Second space
+  'A#4': 5,
   'B4': 6,   // Third line
   'C5': 7,   // Third space
+  'C#5': 7,
   'D5': 8,   // Fourth line
+  'D#5': 8,
   'E5': 9,   // Fourth space
   'F5': 10   // Top line
 };
