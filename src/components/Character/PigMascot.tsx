@@ -82,15 +82,6 @@ const PigMascot: React.FC<PigMascotProps> = ({ mood, customization = [] }) => {
           return null;
         })}
       </div>
-      
-      <div className="pig-legs">
-        <div className="leg front-left"></div>
-        <div className="leg front-right"></div>
-        <div className="leg back-left"></div>
-        <div className="leg back-right"></div>
-      </div>
-      
-      <div className="pig-tail"></div>
 
       {mood === 'celebrating' && (
         <div className="celebration-effects">
