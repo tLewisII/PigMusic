@@ -48,21 +48,6 @@ export interface LevelProgress {
   completed: boolean;
 }
 
-export interface SaveData {
-  userId: string;
-  progress: LevelProgress[];
-  inventory: CustomizationItem[];
-  settings: GameSettings;
-  statistics: GameStatistics;
-}
-
-export interface GameStatistics {
-  totalNotesPlayed: number;
-  correctNotes: number;
-  averageResponseTime: number;
-  longestStreak: number;
-  totalPlayTime: number;
-}
 
 export const NOTES_PER_LEVEL = [
   // Level 1: just the first three notes around middle C

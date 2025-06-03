@@ -89,35 +89,6 @@
   font-weight: bold;
 }
 
-.pig-legs {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 20px;
-}
-
-.leg {
-  width: 20px;
-  height: 40px;
-  background: #FFB6C1;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.pig-tail {
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  width: 30px;
-  height: 30px;
-  border: 5px solid #FF91A4;
-  border-radius: 50%;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-  transform: rotate(45deg);
-}
 
 .pig-mascot.happy .pig-body {
   animation: wiggle 0.5s ease-in-out;
