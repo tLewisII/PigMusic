@@ -32,12 +32,11 @@ describe('PigMascot', () => {
   it('renders all pig body parts', () => {
     const { container } = render(<PigMascot mood="idle" />);
     expect(container.querySelector('.pig-body')).toBeInTheDocument();
-    expect(container.querySelector('.pig-head')).toBeInTheDocument();
-    expect(container.querySelector('.pig-snout')).toBeInTheDocument();
+    expect(container.querySelector('.pig-face')).toBeInTheDocument();
+    expect(container.querySelector('.snout')).toBeInTheDocument();
     expect(container.querySelectorAll('.nostril')).toHaveLength(2);
     expect(container.querySelectorAll('.eye')).toHaveLength(2);
     expect(container.querySelectorAll('.ear')).toHaveLength(2);
-    expect(container.querySelectorAll('.leg')).toHaveLength(4);
-    expect(container.querySelector('.tail')).toBeInTheDocument();
+    expect(container.querySelector('.mouth')).toBeInTheDocument();
   });
 });

@@ -1,52 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ClefSelector renders correctly with bass clef selected 1`] = `
-<div
-  class="clef-selector"
->
-  <h2>
-    Choose Your Clef
-  </h2>
-  <div
-    class="clef-options"
-  >
-    <button
-      aria-label="Select Treble Clef"
-      class="clef-option treble-clef"
-    >
-      <div
-        class="clef-icon"
-      >
-        🎼
-      </div>
-      <h3>
-        Treble Clef
-      </h3>
-      <p>
-        Higher notes (C4 - F5)
-      </p>
-    </button>
-    <button
-      aria-label="Select Bass Clef"
-      class="clef-option bass-clef"
-    >
-      <div
-        class="clef-icon"
-      >
-        🎵
-      </div>
-      <h3>
-        Bass Clef
-      </h3>
-      <p>
-        Lower notes (E2 - C4)
-      </p>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`ClefSelector renders correctly with treble clef selected 1`] = `
+exports[`ClefSelector renders correctly 1`] = `
 <div
   class="clef-selector"
 >

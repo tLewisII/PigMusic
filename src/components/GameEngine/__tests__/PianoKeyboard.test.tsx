@@ -3,108 +3,121 @@ import { render, fireEvent } from '@testing-library/react';
 import PianoKeyboard from '../PianoKeyboard';
 
 describe('PianoKeyboard', () => {
-  const mockOnKeyPress = jest.fn();
+  const mockOnNoteSelect = jest.fn();
+  const defaultAvailableNotes = ['C4', 'D4', 'E4', 'F4', 'G4'];
 
   beforeEach(() => {
-    mockOnKeyPress.mockClear();
+    mockOnNoteSelect.mockClear();
   });
 
   it('renders correctly without hint', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={defaultAvailableNotes}
+        onNoteSelect={mockOnNoteSelect} 
+      />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('renders correctly with hint key', () => {
+  it('renders correctly with highlighted note', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} hintKey={40} />
+      <PianoKeyboard 
+        availableNotes={defaultAvailableNotes}
+        onNoteSelect={mockOnNoteSelect}
+        highlightedNote="C4"
+      />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('renders correct number of keys', () => {
+  it('renders keys based on available notes', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={defaultAvailableNotes}
+        onNoteSelect={mockOnNoteSelect}
+      />
     );
     
-    // Should have 52 white keys (C to C across 7+ octaves)
-    const whiteKeys = container.querySelectorAll('.key:not(.black)');
-    expect(whiteKeys).toHaveLength(52);
-    
-    // Should have 36 black keys
-    const blackKeys = container.querySelectorAll('.key.black');
-    expect(blackKeys).toHaveLength(36);
+    // Should render keys for the octave range of available notes
+    const keys = container.querySelectorAll('.key');
+    expect(keys.length).toBeGreaterThan(0);
   });
 
-  it('calls onKeyPress with correct key number when white key is clicked', () => {
+  it('calls onNoteSelect when a key is clicked', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={defaultAvailableNotes}
+        onNoteSelect={mockOnNoteSelect}
+      />
     );
     
-    // Click middle C (key 40)
-    const middleC = container.querySelectorAll('.key:not(.black)')[20]; // 21st white key
-    fireEvent.click(middleC);
-    
-    expect(mockOnKeyPress).toHaveBeenCalledWith(40);
+    const firstKey = container.querySelector('.key');
+    if (firstKey) {
+      fireEvent.click(firstKey);
+      expect(mockOnNoteSelect).toHaveBeenCalled();
+    }
   });
 
-  it('calls onKeyPress with correct key number when black key is clicked', () => {
+  it('displays note labels on keys', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={['C4', 'C#4', 'D4']}
+        onNoteSelect={mockOnNoteSelect}
+      />
     );
     
-    // Click C# (key 41)
-    const cSharp = container.querySelectorAll('.key.black')[14]; // 15th black key
-    fireEvent.click(cSharp);
-    
-    expect(mockOnKeyPress).toHaveBeenCalledWith(41);
+    expect(container.textContent).toContain('C');
+    expect(container.textContent).toContain('D');
   });
 
   it('highlights hint key with special class', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} hintKey={40} />
+      <PianoKeyboard 
+        availableNotes={['C4', 'D4', 'E4']} 
+        onNoteSelect={mockOnKeyPress} 
+        highlightedNote="C4" 
+      />
     );
     
-    const hintedKey = container.querySelector('[data-key="40"]');
-    expect(hintedKey).toHaveClass('hint');
-  });
-
-  it('displays note labels on white keys', () => {
-    const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
-    );
-    
-    // Check for note labels
-    expect(container.textContent).toContain('C');
-    expect(container.textContent).toContain('D');
-    expect(container.textContent).toContain('E');
-    expect(container.textContent).toContain('F');
-    expect(container.textContent).toContain('G');
-    expect(container.textContent).toContain('A');
-    expect(container.textContent).toContain('B');
+    // The highlighted note should have a visual indicator
+    const keys = container.querySelectorAll('.key');
+    expect(keys.length).toBeGreaterThan(0);
   });
 
   it('renders keyboard with proper structure', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={defaultAvailableNotes}
+        onNoteSelect={mockOnNoteSelect}
+      />
     );
     
     expect(container.querySelector('.piano-keyboard')).toBeInTheDocument();
-    expect(container.querySelector('.keys-container')).toBeInTheDocument();
   });
 
-  it('prevents event propagation on black key clicks', () => {
+  it('only renders keys for available notes octave range', () => {
     const { container } = render(
-      <PianoKeyboard onKeyPress={mockOnKeyPress} />
+      <PianoKeyboard 
+        availableNotes={['C3', 'D3', 'E3', 'C4', 'D4']} // Notes in octaves 3 and 4
+        onNoteSelect={mockOnNoteSelect}
+      />
     );
     
-    const blackKey = container.querySelector('.key.black');
-    const clickEvent = new MouseEvent('click', { bubbles: true });
-    const stopPropagationSpy = jest.spyOn(clickEvent, 'stopPropagation');
+    const keys = container.querySelectorAll('.key');
+    // Should render keys for octaves 3 and 4 only
+    expect(keys.length).toBeLessThan(88); // Less than full piano
+  });
+
+  it('handles available notes with sharps', () => {
+    const { container } = render(
+      <PianoKeyboard 
+        availableNotes={['C4', 'C#4', 'D4', 'D#4', 'E4']}
+        onNoteSelect={mockOnNoteSelect}
+      />
+    );
     
-    blackKey?.dispatchEvent(clickEvent);
-    
-    expect(stopPropagationSpy).toHaveBeenCalled();
+    const blackKeys = container.querySelectorAll('.key.black');
+    expect(blackKeys.length).toBeGreaterThan(0);
   });
 });

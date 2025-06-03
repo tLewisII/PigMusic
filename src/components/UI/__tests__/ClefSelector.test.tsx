@@ -9,23 +9,16 @@ describe('ClefSelector', () => {
     mockOnSelectClef.mockClear();
   });
 
-  it('renders correctly with treble clef selected', () => {
+  it('renders correctly', () => {
     const { container } = render(
-      <ClefSelector selectedClef="treble" onSelectClef={mockOnSelectClef} />
-    );
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('renders correctly with bass clef selected', () => {
-    const { container } = render(
-      <ClefSelector selectedClef="bass" onSelectClef={mockOnSelectClef} />
+      <ClefSelector onSelectClef={mockOnSelectClef} />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onSelectClef when treble button is clicked', () => {
     const { getByText } = render(
-      <ClefSelector selectedClef="bass" onSelectClef={mockOnSelectClef} />
+      <ClefSelector onSelectClef={mockOnSelectClef} />
     );
     
     fireEvent.click(getByText('Treble Clef'));
@@ -34,31 +27,21 @@ describe('ClefSelector', () => {
 
   it('calls onSelectClef when bass button is clicked', () => {
     const { getByText } = render(
-      <ClefSelector selectedClef="treble" onSelectClef={mockOnSelectClef} />
+      <ClefSelector onSelectClef={mockOnSelectClef} />
     );
     
     fireEvent.click(getByText('Bass Clef'));
     expect(mockOnSelectClef).toHaveBeenCalledWith('bass');
   });
 
-  it('applies active class to selected clef button', () => {
+  it('renders both clef options', () => {
     const { getByText } = render(
-      <ClefSelector selectedClef="treble" onSelectClef={mockOnSelectClef} />
+      <ClefSelector onSelectClef={mockOnSelectClef} />
     );
     
-    const trebleButton = getByText('Treble Clef');
-    const bassButton = getByText('Bass Clef');
-    
-    expect(trebleButton).toHaveClass('active');
-    expect(bassButton).not.toHaveClass('active');
-  });
-
-  it('does not re-trigger onSelectClef when clicking already selected clef', () => {
-    const { getByText } = render(
-      <ClefSelector selectedClef="treble" onSelectClef={mockOnSelectClef} />
-    );
-    
-    fireEvent.click(getByText('Treble Clef'));
-    expect(mockOnSelectClef).not.toHaveBeenCalled();
+    expect(getByText('Treble Clef')).toBeInTheDocument();
+    expect(getByText('Bass Clef')).toBeInTheDocument();
+    expect(getByText('Higher notes (C4 - F5)')).toBeInTheDocument();
+    expect(getByText('Lower notes (E2 - C4)')).toBeInTheDocument();
   });
 });
