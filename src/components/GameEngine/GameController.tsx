@@ -131,7 +131,7 @@ const GameController: React.FC<GameControllerProps> = ({
           <VexFlowNoteDisplay 
             note={gameState.currentNote}
             showHint={showHint}
-            clef={gameState.selectedClef}
+            clef={gameState.currentNote?.clef || gameState.selectedClef}
           />
           <ProgressBar 
             current={gameState.notesCompleted}

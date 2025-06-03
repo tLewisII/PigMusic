@@ -67,7 +67,8 @@ const App: React.FC = () => {
       currentLevel: level,
       strikes: 0,
       streak: 0,
-      notesCompleted: 0
+      notesCompleted: 0,
+      currentNote: null  // Clear any existing note to force regeneration
     }));
     setCurrentScreen('game');
   };
@@ -97,7 +98,8 @@ const App: React.FC = () => {
   const handleClefSelect = (clef: Clef) => {
     setGameState(prev => ({
       ...prev,
-      selectedClef: clef
+      selectedClef: clef,
+      currentNote: null  // Clear any existing note when switching clefs
     }));
     setCurrentScreen('levelSelect');
   };
