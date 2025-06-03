@@ -1,6 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import PianoKeyboard from '../PianoKeyboard';
+import AudioManager from '../../../services/AudioManager';
+
+jest.mock('../../../services/AudioManager');
 
 describe('PianoKeyboard', () => {
   const mockOnNoteSelect = jest.fn();
@@ -40,11 +43,12 @@ describe('PianoKeyboard', () => {
     );
     
     // Should render keys for the octave range of available notes
-    const keys = container.querySelectorAll('.key');
-    expect(keys.length).toBeGreaterThan(0);
+    const whiteKeys = container.querySelectorAll('.white-key');
+    const blackKeys = container.querySelectorAll('.black-key');
+    expect(whiteKeys.length + blackKeys.length).toBeGreaterThan(0);
   });
 
-  it('calls onNoteSelect when a key is clicked', () => {
+  it('calls onNoteSelect when a key is clicked', async () => {
     const { container } = render(
       <PianoKeyboard 
         availableNotes={defaultAvailableNotes}
@@ -52,11 +56,13 @@ describe('PianoKeyboard', () => {
       />
     );
     
-    const firstKey = container.querySelector('.key');
-    if (firstKey) {
-      fireEvent.click(firstKey);
+    const firstKey = container.querySelector('.white-key:not(.disabled)');
+    expect(firstKey).toBeInTheDocument();
+    fireEvent.click(firstKey!);
+    
+    await waitFor(() => {
       expect(mockOnNoteSelect).toHaveBeenCalled();
-    }
+    });
   });
 
   it('displays note labels on keys', () => {
@@ -75,14 +81,14 @@ describe('PianoKeyboard', () => {
     const { container } = render(
       <PianoKeyboard 
         availableNotes={['C4', 'D4', 'E4']} 
-        onNoteSelect={mockOnKeyPress} 
+        onNoteSelect={mockOnNoteSelect} 
         highlightedNote="C4" 
       />
     );
     
     // The highlighted note should have a visual indicator
-    const keys = container.querySelectorAll('.key');
-    expect(keys.length).toBeGreaterThan(0);
+    const highlightedKey = container.querySelector('.highlighted');
+    expect(highlightedKey).toBeInTheDocument();
   });
 
   it('renders keyboard with proper structure', () => {
@@ -104,9 +110,10 @@ describe('PianoKeyboard', () => {
       />
     );
     
-    const keys = container.querySelectorAll('.key');
+    const whiteKeys = container.querySelectorAll('.white-key');
+    const blackKeys = container.querySelectorAll('.black-key');
     // Should render keys for octaves 3 and 4 only
-    expect(keys.length).toBeLessThan(88); // Less than full piano
+    expect(whiteKeys.length + blackKeys.length).toBeLessThan(88); // Less than full piano
   });
 
   it('handles available notes with sharps', () => {
@@ -117,7 +124,7 @@ describe('PianoKeyboard', () => {
       />
     );
     
-    const blackKeys = container.querySelectorAll('.key.black');
+    const blackKeys = container.querySelectorAll('.black-key');
     expect(blackKeys.length).toBeGreaterThan(0);
   });
 });

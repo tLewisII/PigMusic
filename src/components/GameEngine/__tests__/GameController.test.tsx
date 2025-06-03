@@ -264,48 +264,49 @@ describe('GameController', () => {
     expect(getByText('🐽 5')).toBeInTheDocument();
   });
 
-  it('plays note sound when sound is enabled', () => {
-    const stateWithNote = {
-      ...mockGameState,
-      currentNote: {
-        pitch: 'C4',
-        staffPosition: 0,
-        clef: 'treble' as const,
-      },
-    };
-
+  it('configures audio settings on mount', () => {
     render(
       <GameController
-        gameState={stateWithNote}
+        gameState={mockGameState}
         setGameState={mockSetGameState}
         onLevelComplete={mockOnLevelComplete}
         onBackToMenu={mockOnBackToMenu}
       />
     );
 
-    expect(AudioManager.playNote).toHaveBeenCalledWith('C4');
+    expect(AudioManager.setVolume).toHaveBeenCalledWith(0.5);
+    expect(AudioManager.setSoundEffectsEnabled).toHaveBeenCalledWith(true);
   });
 
-  it('does not play note sound when sound is disabled', () => {
-    const stateWithNoteNoSound = {
-      ...mockGameState,
-      settings: { ...mockGameState.settings, soundEffects: false },
-      currentNote: {
-        pitch: 'C4',
-        staffPosition: 0,
-        clef: 'treble' as const,
-      },
-    };
-
-    render(
+  it('updates audio settings when they change', () => {
+    const { rerender } = render(
       <GameController
-        gameState={stateWithNoteNoSound}
+        gameState={mockGameState}
         setGameState={mockSetGameState}
         onLevelComplete={mockOnLevelComplete}
         onBackToMenu={mockOnBackToMenu}
       />
     );
 
-    expect(AudioManager.playNote).not.toHaveBeenCalled();
+    const updatedState = {
+      ...mockGameState,
+      settings: {
+        ...mockGameState.settings,
+        volume: 0.8,
+        soundEffects: false,
+      },
+    };
+
+    rerender(
+      <GameController
+        gameState={updatedState}
+        setGameState={mockSetGameState}
+        onLevelComplete={mockOnLevelComplete}
+        onBackToMenu={mockOnBackToMenu}
+      />
+    );
+
+    expect(AudioManager.setVolume).toHaveBeenCalledWith(0.8);
+    expect(AudioManager.setSoundEffectsEnabled).toHaveBeenCalledWith(false);
   });
 });
