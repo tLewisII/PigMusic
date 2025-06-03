@@ -41,7 +41,7 @@ const App: React.FC = () => {
     const savedData = localStorage.getItem('pigMusicSaveData');
     if (savedData) {
       const data = JSON.parse(savedData);
-      setLevelProgress(data.progress || levelProgress);
+      setLevelProgress(prev => data.progress || prev);
       setGameState(prev => ({
         ...prev,
         pigCoins: data.pigCoins || 0,
