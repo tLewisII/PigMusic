@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PigMascot renders correctly in celebrating mood 1`] = `
+<div
+  class="pig-mascot celebrating"
+  style="transform: scale(1) translateY(0px);"
+>
+  <div
+    class="pig-body"
+  >
+    <div
+      class="pig-ears"
+    >
+      <div
+        class="ear left"
+      />
+      <div
+        class="ear right"
+      />
+    </div>
+    <div
+      class="pig-face"
+    >
+      <div
+        class="eyes"
+      >
+        <span
+          class="eye left"
+        >
+          &gt;
+        </span>
+        <span
+          class="eye right"
+        >
+          &lt;
+        </span>
+      </div>
+      <div
+        class="snout"
+      >
+        <div
+          class="nostril left"
+        />
+        <div
+          class="nostril right"
+        />
+      </div>
+      <div
+        class="mouth"
+      >
+        D
+      </div>
+    </div>
+  </div>
+  <div
+    class="celebration-effects"
+  >
+    <span
+      class="confetti"
+    >
+      🎉
+    </span>
+    <span
+      class="confetti"
+    >
+      ✨
+    </span>
+    <span
+      class="confetti"
+    >
+      🎊
+    </span>
+  </div>
+</div>
+`;
+
+exports[`PigMascot renders correctly in encouraging mood 1`] = `
+<div
+  class="pig-mascot encouraging"
+  style="transform: scale(1) translateY(0px);"
+>
+  <div
+    class="pig-body"
+  >
+    <div
+      class="pig-ears"
+    >
+      <div
+        class="ear left"
+      />
+      <div
+        class="ear right"
+      />
+    </div>
+    <div
+      class="pig-face"
+    >
+      <div
+        class="eyes"
+      >
+        <span
+          class="eye left"
+        >
+          o
+        </span>
+        <span
+          class="eye right"
+        >
+          o
+        </span>
+      </div>
+      <div
+        class="snout"
+      >
+        <div
+          class="nostril left"
+        />
+        <div
+          class="nostril right"
+        />
+      </div>
+      <div
+        class="mouth"
+      >
+        o
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PigMascot renders correctly in happy mood 1`] = `
+<div
+  class="pig-mascot happy"
+  style="transform: scale(1) translateY(0px);"
+>
+  <div
+    class="pig-body"
+  >
+    <div
+      class="pig-ears"
+    >
+      <div
+        class="ear left"
+      />
+      <div
+        class="ear right"
+      />
+    </div>
+    <div
+      class="pig-face"
+    >
+      <div
+        class="eyes"
+      >
+        <span
+          class="eye left"
+        >
+          ^
+        </span>
+        <span
+          class="eye right"
+        >
+          ^
+        </span>
+      </div>
+      <div
+        class="snout"
+      >
+        <div
+          class="nostril left"
+        />
+        <div
+          class="nostril right"
+        />
+      </div>
+      <div
+        class="mouth"
+      >
+        D
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PigMascot renders correctly in idle mood 1`] = `
+<div
+  class="pig-mascot idle"
+  style="transform: rotate(0deg);"
+>
+  <div
+    class="pig-body"
+  >
+    <div
+      class="pig-ears"
+    >
+      <div
+        class="ear left"
+      />
+      <div
+        class="ear right"
+      />
+    </div>
+    <div
+      class="pig-face"
+    >
+      <div
+        class="eyes"
+      >
+        <span
+          class="eye left"
+        >
+          •
+        </span>
+        <span
+          class="eye right"
+        >
+          •
+        </span>
+      </div>
+      <div
+        class="snout"
+      >
+        <div
+          class="nostril left"
+        />
+        <div
+          class="nostril right"
+        />
+      </div>
+      <div
+        class="mouth"
+      >
+        ᵕ
+      </div>
+    </div>
+  </div>
+</div>
+`;

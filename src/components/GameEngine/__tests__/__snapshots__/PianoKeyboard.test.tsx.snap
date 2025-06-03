@@ -1,0 +1,323 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PianoKeyboard renders correctly with highlighted note 1`] = `
+<div
+  class="piano-keyboard"
+>
+  <div
+    class="keys-container"
+  >
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  highlighted"
+      >
+        <span
+          class="key-label"
+        >
+          C
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          C#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          D
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          D#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          E
+          4
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          F
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          F#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          G
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          G#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          A
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          A#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          B
+          4
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PianoKeyboard renders correctly without hint 1`] = `
+<div
+  class="piano-keyboard"
+>
+  <div
+    class="keys-container"
+  >
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          C
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          C#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          D
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          D#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          E
+          4
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          F
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          F#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key  "
+      >
+        <span
+          class="key-label"
+        >
+          G
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          G#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          A
+          4
+        </span>
+      </button>
+      <button
+        class="black-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          A#
+        </span>
+      </button>
+    </div>
+    <div
+      class="key-wrapper"
+    >
+      <button
+        class="white-key disabled "
+        disabled=""
+      >
+        <span
+          class="key-label"
+        >
+          B
+          4
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
