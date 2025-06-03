@@ -4,10 +4,10 @@ import { LevelProgress } from '../../../types/game';
 
 describe('LevelSelect', () => {
   const baseProgress: LevelProgress[] = [
-    { levelNumber: 1, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 2, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 3, oinks: 0, bestScore: 0, completed: false },
-    { levelNumber: 4, oinks: 0, bestScore: 0, completed: false }
+    { levelNumber: 1, oinks: 0, completed: false },
+    { levelNumber: 2, oinks: 0, completed: false },
+    { levelNumber: 3, oinks: 0, completed: false },
+    { levelNumber: 4, oinks: 0, completed: false }
   ];
 
   test('disables locked level button', () => {

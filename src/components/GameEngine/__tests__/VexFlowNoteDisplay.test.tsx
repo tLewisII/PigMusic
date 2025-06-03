@@ -6,6 +6,7 @@ import { Note } from '../../../types/game';
 jest.mock('vexflow', () => {
   class MockRenderer {
     static Backends = { SVG: 'svg' };
+    element: any;
     constructor(element: any) {
       this.element = element;
       this.element.innerHTML = '<svg></svg>';
@@ -25,8 +26,8 @@ jest.mock('vexflow', () => {
 
 describe('VexFlowNoteDisplay', () => {
   test('renders SVG when a note is provided', () => {
-    const note: Note = { pitch: 'C4', staffPosition: 0 };
-    const { container } = render(<VexFlowNoteDisplay note={note} showHint={false} />);
+    const note: Note = { pitch: 'C4', staffPosition: 0, clef: 'treble' };
+    const { container } = render(<VexFlowNoteDisplay note={note} showHint={false} clef="treble" />);
     // the mock renderer injects an svg element
     expect(container.querySelector('svg')).toBeInTheDocument();
   });

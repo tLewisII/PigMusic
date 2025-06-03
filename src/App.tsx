@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { GameState, GameSettings, LevelProgress } from './types/game';
+import { GameState, GameSettings, LevelProgress, Clef } from './types/game';
 import GameController from './components/GameEngine/GameController';
 import LevelSelect from './components/UI/LevelSelect';
+import ClefSelector from './components/UI/ClefSelector';
 import './App.css';
 
 const initialSettings: GameSettings = {
@@ -23,7 +24,8 @@ const App: React.FC = () => {
     settings: initialSettings,
     streak: 0,
     notesCompleted: 0,
-    notesInLevel: 10
+    notesInLevel: 10,
+    selectedClef: 'treble'
   });
 
   const [levelProgress, setLevelProgress] = useState<LevelProgress[]>([
@@ -33,7 +35,7 @@ const App: React.FC = () => {
     { levelNumber: 4, oinks: 0, completed: false }
   ]);
 
-  const [currentScreen, setCurrentScreen] = useState<'menu' | 'game' | 'levelSelect'>('menu');
+  const [currentScreen, setCurrentScreen] = useState<'menu' | 'game' | 'levelSelect' | 'clefSelect'>('menu');
 
   useEffect(() => {
     const savedData = localStorage.getItem('pigMusicSaveData');
@@ -65,7 +67,8 @@ const App: React.FC = () => {
       currentLevel: level,
       strikes: 0,
       streak: 0,
-      notesCompleted: 0
+      notesCompleted: 0,
+      currentNote: null  // Clear any existing note to force regeneration
     }));
     setCurrentScreen('game');
   };
@@ -92,6 +95,15 @@ const App: React.FC = () => {
     setCurrentScreen('menu');
   };
 
+  const handleClefSelect = (clef: Clef) => {
+    setGameState(prev => ({
+      ...prev,
+      selectedClef: clef,
+      currentNote: null  // Clear any existing note when switching clefs
+    }));
+    setCurrentScreen('levelSelect');
+  };
+
   return (
     <div className="App">
       {currentScreen === 'menu' && (
@@ -100,11 +112,17 @@ const App: React.FC = () => {
           <p className="tagline">Learn to read music with your pig pal!</p>
           <button 
             className="play-button"
-            onClick={() => setCurrentScreen('levelSelect')}
+            onClick={() => setCurrentScreen('clefSelect')}
           >
             Play! 🎹
           </button>
         </div>
+      )}
+      
+      {currentScreen === 'clefSelect' && (
+        <ClefSelector
+          onSelectClef={handleClefSelect}
+        />
       )}
       
       {currentScreen === 'levelSelect' && (
