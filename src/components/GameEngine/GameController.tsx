@@ -20,7 +20,6 @@ const GameController: React.FC<GameControllerProps> = ({
   onLevelComplete,
   onBackToMenu
 }) => {
-  const [startTime, setStartTime] = useState<number>(Date.now());
   const [pigMood, setPigMood] = useState<'idle' | 'happy' | 'encouraging' | 'celebrating'>('idle');
   const [showHint, setShowHint] = useState(false);
 
@@ -47,7 +46,6 @@ const GameController: React.FC<GameControllerProps> = ({
     if (!gameState.currentNote) {
       const newNote = generateRandomNote();
       setGameState(prev => ({ ...prev, currentNote: newNote }));
-      setStartTime(Date.now());
     }
   }, [gameState.currentNote, generateRandomNote, setGameState]);
 
@@ -90,6 +88,13 @@ const GameController: React.FC<GameControllerProps> = ({
     }
   };
 
+  const calculateOinks = useCallback((): number => {
+    const accuracy = (gameState.notesCompleted / (gameState.notesCompleted + gameState.strikes * 3)) * 100;
+    if (accuracy >= 90) return 3;
+    if (accuracy >= 70) return 2;
+    return 1;
+  }, [gameState.notesCompleted, gameState.strikes]);
+
   useEffect(() => {
     if (gameState.notesCompleted >= gameState.notesInLevel) {
       const oinks = calculateOinks();
@@ -99,14 +104,7 @@ const GameController: React.FC<GameControllerProps> = ({
         onLevelComplete(oinks);
       }, 2000);
     }
-  }, [gameState.notesCompleted, gameState.notesInLevel]);
-
-  const calculateOinks = (): number => {
-    const accuracy = (gameState.notesCompleted / (gameState.notesCompleted + gameState.strikes * 3)) * 100;
-    if (accuracy >= 90) return 3;
-    if (accuracy >= 70) return 2;
-    return 1;
-  };
+  }, [gameState.notesCompleted, gameState.notesInLevel, calculateOinks, onLevelComplete]);
 
   const renderOinks = (count: number) =>
     Array.from({ length: 3 }, (_, i) => (

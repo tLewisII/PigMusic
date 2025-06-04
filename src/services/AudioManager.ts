@@ -113,4 +113,5 @@ class AudioManager {
   }
 }
 
-export default new AudioManager();
+const audioManager = new AudioManager();
+export default audioManager;
