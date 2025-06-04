@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PigMusic/static/css/main.55e47b96.css",
+    "main.js": "/PigMusic/static/js/main.5c1a70c2.js",
+    "index.html": "/PigMusic/index.html",
+    "main.55e47b96.css.map": "/PigMusic/static/css/main.55e47b96.css.map",
+    "main.5c1a70c2.js.map": "/PigMusic/static/js/main.5c1a70c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55e47b96.css",
+    "static/js/main.5c1a70c2.js"
+  ]
+}
