@@ -46,7 +46,6 @@ const GameController: React.FC<GameControllerProps> = ({
     if (!gameState.currentNote) {
       const newNote = generateRandomNote();
       setGameState(prev => ({ ...prev, currentNote: newNote }));
-      setStartTime(Date.now());
     }
   }, [gameState.currentNote, generateRandomNote, setGameState]);
 
