@@ -19,3 +19,20 @@
   align-items: center;
   min-height: 200px;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .note-display {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .vexflow-container {
+    min-height: 150px;
+  }
+
+  .hint-text {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+}

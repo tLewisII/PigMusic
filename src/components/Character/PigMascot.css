@@ -145,3 +145,64 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .pig-mascot {
+    width: 100px;
+    height: 100px;
+  }
+
+  .pig-body {
+    width: 75px;
+    height: 60px;
+  }
+
+  .pig-ears {
+    top: -10px;
+  }
+
+  .ear {
+    width: 20px;
+    height: 25px;
+  }
+
+  .ear.left {
+    left: 10px;
+  }
+
+  .ear.right {
+    right: 10px;
+  }
+
+  .eyes {
+    gap: 20px;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .snout {
+    width: 30px;
+    height: 20px;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+
+  .nostril {
+    width: 5px;
+    height: 7px;
+  }
+
+  .mouth {
+    font-size: 12px;
+  }
+
+  .celebration-effects {
+    top: -20px;
+    gap: 10px;
+  }
+
+  .confetti {
+    font-size: 14px;
+  }
+}
