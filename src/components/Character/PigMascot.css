@@ -149,52 +149,52 @@
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .pig-mascot {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
   }
 
   .pig-body {
-    width: 105px;
-    height: 84px;
+    width: 120px;
+    height: 96px;
   }
 
   .pig-ears {
-    top: -12px;
+    top: -14px;
   }
 
   .ear {
-    width: 24px;
-    height: 30px;
+    width: 28px;
+    height: 35px;
   }
 
   .ear.left {
-    left: 12px;
+    left: 14px;
   }
 
   .ear.right {
-    right: 12px;
+    right: 14px;
   }
 
   .eyes {
-    gap: 24px;
-    font-size: 16px;
-    margin-bottom: 6px;
+    gap: 28px;
+    font-size: 18px;
+    margin-bottom: 7px;
   }
 
   .snout {
-    width: 36px;
-    height: 24px;
-    gap: 10px;
-    margin-bottom: 6px;
+    width: 42px;
+    height: 28px;
+    gap: 12px;
+    margin-bottom: 7px;
   }
 
   .nostril {
-    width: 6px;
-    height: 8px;
+    width: 7px;
+    height: 9px;
   }
 
   .mouth {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .celebration-effects {

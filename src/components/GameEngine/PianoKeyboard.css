@@ -123,19 +123,19 @@
   }
 
   .white-key {
-    width: 38px;
-    height: 120px;
+    width: 42px;
+    height: 130px;
     padding-bottom: 12px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     border-radius: 0 0 6px 6px;
   }
 
   .black-key {
-    width: 26px;
-    height: 75px;
-    right: -13px;
+    width: 28px;
+    height: 80px;
+    right: -14px;
     padding-bottom: 8px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     border-radius: 0 0 4px 4px;
   }
 }
