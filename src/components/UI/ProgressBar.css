@@ -47,3 +47,23 @@
     transform: scale(1);
   }
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .progress-label {
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+
+  .progress-bar {
+    height: 30px;
+  }
+
+  .progress-pig {
+    font-size: 1.2rem;
+  }
+
+  .progress-bar-container {
+    margin-bottom: 10px;
+  }
+}

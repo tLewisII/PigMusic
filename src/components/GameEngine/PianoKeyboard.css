@@ -109,3 +109,33 @@
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
   }
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .piano-keyboard {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .keys-container {
+    gap: 3px;
+    justify-content: center;
+  }
+
+  .white-key {
+    width: 42px;
+    height: 130px;
+    padding-bottom: 12px;
+    font-size: 0.9rem;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .black-key {
+    width: 28px;
+    height: 80px;
+    right: -14px;
+    padding-bottom: 8px;
+    font-size: 0.75rem;
+    border-radius: 0 0 4px 4px;
+  }
+}

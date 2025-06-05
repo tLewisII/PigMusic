@@ -70,3 +70,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .play-button {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+  }
+}
