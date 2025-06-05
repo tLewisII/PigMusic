@@ -23,20 +23,21 @@
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .note-display {
-    padding: 2px;
-    border-radius: 6px;
+    padding: 5px;
+    border-radius: 8px;
     margin: 0;
   }
 
   .vexflow-container {
     min-height: 90px;
-    transform: scale(0.75);
-    transform-origin: center;
-    margin: -25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
   }
 
   .hint-text {
-    margin-top: -10px;
+    margin-top: 5px;
     font-size: 0.85rem;
   }
 }

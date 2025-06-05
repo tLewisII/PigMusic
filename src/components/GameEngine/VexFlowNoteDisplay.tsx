@@ -19,9 +19,17 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint,
     // Clear previous render
     containerRef.current.innerHTML = '';
 
+    // Responsive sizing based on screen width
+    const isMobile = window.innerWidth <= 768;
+    const width = isMobile ? 320 : 500;
+    const height = isMobile ? 120 : 250;
+    const staveWidth = isMobile ? 240 : 400;
+    const staveX = isMobile ? 40 : 10;
+    const staveY = isMobile ? 0 : 60;
+
     // Create renderer
     const renderer = new Renderer(containerRef.current, Renderer.Backends.SVG);
-    renderer.resize(500, 250);
+    renderer.resize(width, height);
     rendererRef.current = renderer;
 
     const context = renderer.getContext();
@@ -29,7 +37,7 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint,
 
     // Create a stave (staff)
     // Adjust vertical position to ensure enough space for ledger lines
-    const stave = new Stave(10, 60, 400);
+    const stave = new Stave(staveX, staveY, staveWidth);
     stave.addClef(clef);
     stave.setContext(context).draw();
 
@@ -63,7 +71,8 @@ const VexFlowNoteDisplay: React.FC<VexFlowNoteDisplayProps> = ({ note, showHint,
       voice.addTickables([staveNote]);
 
       // Format and draw
-      new Formatter().joinVoices([voice]).format([voice], 350);
+      const formatterWidth = isMobile ? 200 : 350;
+      new Formatter().joinVoices([voice]).format([voice], formatterWidth);
       voice.draw(context, stave);
     }
   }, [note, showHint, clef]);
