@@ -76,15 +76,20 @@ const GameController: React.FC<GameControllerProps> = ({
       
       AudioManager.playErrorSound();
 
-      setGameState(prev => ({
-        ...prev,
-        strikes: prev.strikes + 1,
-        streak: 0
-      }));
-
-      if (gameState.strikes === 0 && gameState.settings.showHints) {
-        setShowHint(true);
-      }
+      setGameState(prev => {
+        const newStrikes = prev.strikes + 1;
+        
+        // Show hint if this is the first wrong answer and hints are enabled
+        if (prev.strikes === 0 && gameState.settings.showHints) {
+          setShowHint(true);
+        }
+        
+        return {
+          ...prev,
+          strikes: newStrikes,
+          streak: 0
+        };
+      });
     }
   };
 
