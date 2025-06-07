@@ -64,7 +64,6 @@ const GameController: React.FC<GameControllerProps> = ({
         ...prev,
         streak: prev.streak + 1,
         strikes: 0,
-        pigCoins: prev.pigCoins + 10,
         notesCompleted: prev.notesCompleted + 1,
         currentNote: null
       }));
@@ -119,7 +118,6 @@ const GameController: React.FC<GameControllerProps> = ({
         </button>
         <div className="game-stats">
           <div className="oinks">{renderOinks(calculateOinks())}</div>
-          <div className="coins">🪙 {gameState.pigCoins}</div>
           <div className="super-oink">🐽 {gameState.streak}</div>
         </div>
       </div>

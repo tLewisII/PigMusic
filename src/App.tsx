@@ -18,7 +18,6 @@ const App: React.FC = () => {
     currentLevel: 0,
     currentNote: null,
     strikes: 0,
-    pigCoins: 0,
     unlockedItems: [],
     achievements: [],
     settings: initialSettings,
@@ -44,7 +43,6 @@ const App: React.FC = () => {
       setLevelProgress(prev => data.progress || prev);
       setGameState(prev => ({
         ...prev,
-        pigCoins: data.pigCoins || 0,
         unlockedItems: data.inventory || [],
         settings: data.settings || initialSettings
       }));
@@ -54,7 +52,6 @@ const App: React.FC = () => {
   const saveProgress = () => {
     const saveData = {
       progress: levelProgress,
-      pigCoins: gameState.pigCoins,
       inventory: gameState.unlockedItems,
       settings: gameState.settings
     };

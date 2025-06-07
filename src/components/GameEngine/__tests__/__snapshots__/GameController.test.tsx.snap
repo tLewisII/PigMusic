@@ -35,12 +35,6 @@ exports[`GameController renders correctly with initial state 1`] = `
         </span>
       </div>
       <div
-        class="coins"
-      >
-        🪙 
-        0
-      </div>
-      <div
         class="super-oink"
       >
         🐽 

@@ -11,7 +11,6 @@ export interface GameState {
   currentLevel: number;
   currentNote: Note | null;
   strikes: number;
-  pigCoins: number;
   unlockedItems: CustomizationItem[];
   achievements: Achievement[];
   settings: GameSettings;
@@ -25,7 +24,6 @@ export interface CustomizationItem {
   id: string;
   type: 'hat' | 'accessory' | 'background' | 'instrument';
   name: string;
-  cost: number;
   unlocked: boolean;
   equipped: boolean;
 }
