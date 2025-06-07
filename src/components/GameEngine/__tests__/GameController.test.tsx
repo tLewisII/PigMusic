@@ -30,7 +30,6 @@ describe('GameController', () => {
     currentLevel: 1,
     currentNote: null,
     strikes: 0,
-    pigCoins: 0,
     unlockedItems: [],
     achievements: [],
     settings: {
@@ -203,8 +202,7 @@ describe('GameController', () => {
       />
     );
 
-    // Check for coins and streak display
-    expect(getByText('🪙 0')).toBeInTheDocument();
+    // Check for streak display
     expect(getByText('🐽 0')).toBeInTheDocument();
   });
 
